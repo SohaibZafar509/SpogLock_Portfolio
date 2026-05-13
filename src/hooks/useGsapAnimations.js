@@ -88,9 +88,25 @@ export function useGsapAnimations(routeKey) {
       })
 
       gsap.utils.toArray('.marquee-track').forEach((track) => {
+        const speed = Number(track.dataset.speed) || 18
+
+        if (track.dataset.direction === 'right') {
+          gsap.fromTo(
+            track,
+            { xPercent: -50 },
+            {
+              xPercent: 0,
+              duration: speed,
+              ease: 'none',
+              repeat: -1,
+            },
+          )
+          return
+        }
+
         gsap.to(track, {
           xPercent: -50,
-          duration: 18,
+          duration: speed,
           ease: 'none',
           repeat: -1,
         })

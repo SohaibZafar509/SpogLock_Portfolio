@@ -10,6 +10,10 @@ import aboutShapeTwo from '../assets/img/about/ai/shape-2.png'
 import aboutShapeThree from '../assets/img/about/ai/shape-3.png'
 import bannerPoster from '../assets/img/banner/ai/thumb.jpg'
 import bannerVideo from '../assets/vid.mp4'
+import serviceMobile from '../assets/img/service/ai/thumb.jpg'
+import serviceWeb from '../assets/img/service/ai/thumb-2.jpg'
+import serviceBusiness from '../assets/img/service/ai/thumb-3.jpg'
+import serviceDesign from '../assets/img/service/ai/thumb-4.jpg'
 import awardsShape from '../assets/img/awards/grid-shape.png'
 import pricingBg from '../assets/img/pricing/pricing.png'
 import pricingShape from '../assets/img/pricing/shape.png'
@@ -106,6 +110,8 @@ export const services = [
     description: 'Native-quality apps with smooth flows, stable architecture, and launch-ready polish.',
     href: '/portfolio?filter=mobile',
     image: cheezious,
+    cardTitle: 'Mobile Apps',
+    cardImage: serviceMobile,
   },
   {
     title: 'Web App Development',
@@ -113,6 +119,8 @@ export const services = [
     description: 'Dashboards, portals, booking systems, logistics tools, and custom business software.',
     href: '/portfolio?filter=webapps',
     image: inventory,
+    cardTitle: 'Web & Desktop Apps',
+    cardImage: serviceWeb,
   },
   {
     title: 'Custom Software',
@@ -120,6 +128,8 @@ export const services = [
     description: 'Workflow-specific systems for teams that need software to match how they operate.',
     href: '/portfolio?filter=webapps',
     image: baigTransport,
+    cardTitle: 'Business Systems',
+    cardImage: serviceBusiness,
   },
   {
     title: 'UI/UX Design',
@@ -127,6 +137,8 @@ export const services = [
     description: 'Product strategy, wireframes, design systems, and high-fidelity app interfaces.',
     href: '/portfolio?filter=uiux',
     image: smartHome,
+    cardTitle: 'UI/UX & Design',
+    cardImage: serviceDesign,
   },
   {
     title: 'Architectural Design',
@@ -134,6 +146,29 @@ export const services = [
     description: 'Concept-led 3D and product visuals for digital launches, presentations, and campaigns.',
     href: '/portfolio?filter=product',
     image: productTwo,
+  },
+]
+
+export const processSteps = [
+  {
+    title: 'Research &',
+    titleBreak: 'Analysis',
+    description: 'Conduct user research (interviews, surveys, analytics).',
+  },
+  {
+    title: 'Design &',
+    titleBreak: 'Prototyping',
+    description: 'Transform wireframes into high-fidelity UI designs.',
+  },
+  {
+    title: 'Testing &',
+    titleBreak: 'Iteration',
+    description: 'Conduct usability testing to gather user feedback.',
+  },
+  {
+    title: 'Prepare for',
+    titleBreak: 'Delivery',
+    description: 'Track performance using analytics and user feedback.',
   },
 ]
 
