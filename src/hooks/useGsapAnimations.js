@@ -48,6 +48,45 @@ export function useGsapAnimations(routeKey) {
         })
       })
 
+      gsap.utils.toArray('.about-scale-image').forEach((element) => {
+        gsap.to(element, {
+          opacity: 1,
+          scale: 1,
+          duration: 0.7,
+          ease: 'back.out(4)',
+          scrollTrigger: {
+            trigger: element,
+            start: 'top 90%',
+          },
+        })
+
+        const grow = () => {
+          gsap.to(element, {
+            scale: 3,
+            borderRadius: 2,
+            boxShadow: '0 2px 8px rgba(0, 0, 0, 0.3)',
+            duration: 0.3,
+          })
+        }
+
+        const shrink = () => {
+          gsap.to(element, {
+            scale: 1,
+            borderRadius: 6,
+            boxShadow: 'none',
+            duration: 0.3,
+          })
+        }
+
+        element.addEventListener('mouseenter', grow)
+        element.addEventListener('mouseleave', shrink)
+
+        cleanupFns.push(() => {
+          element.removeEventListener('mouseenter', grow)
+          element.removeEventListener('mouseleave', shrink)
+        })
+      })
+
       gsap.utils.toArray('.marquee-track').forEach((track) => {
         gsap.to(track, {
           xPercent: -50,

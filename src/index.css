@@ -38,6 +38,12 @@
   }
 }
 
+@keyframes aboutRingSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 :root {
   --bg: #f5f4ed;
   --paper: #ffffff;
@@ -706,35 +712,89 @@ video {
     left: -17px;
     font-size: 110px;
   }
+
+  .about__ring {
+    left: -250px;
+  }
+
+  .about__statement {
+    font-size: 60px;
+  }
 }
 
 .about {
   overflow: hidden;
+  padding-top: 150px;
+  padding-bottom: 130px;
+  z-index: 1;
 }
 
 .about__ring {
   position: absolute;
-  top: 70px;
-  right: 8%;
-  width: 150px;
-  opacity: 0.6;
+  z-index: -1;
+  bottom: 77px;
+  left: -308px;
+  width: 33%;
+  max-width: none;
+  margin: 0;
+  animation: aboutRingSpin 9s linear infinite;
 }
 
 .about__statement {
-  max-width: 1260px;
-  margin-bottom: 90px;
+  max-width: var(--max);
+  margin: 0 auto 80px;
   font-family: "Plus Jakarta Sans", sans-serif;
-  font-size: clamp(38px, 6vw, 84px);
-  font-weight: 700;
-  line-height: 1.15;
+  font-size: 72px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0;
   text-align: center;
+}
+
+.about-scale-image {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  margin: 0 10px -9px;
+  overflow: hidden;
+  border-radius: 6px;
+  background: #111112;
+  cursor: pointer;
+  opacity: 0;
+  transform: scale(0.5);
+  transform-origin: center;
+  transition: border-radius 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.about-scale-image::before {
+  position: absolute;
+  inset: 0;
+  background-color: #111112;
+  background-image: var(--about-image);
+  background-position: center;
+  background-size: cover;
+  opacity: 0;
+  content: "";
+  transition: opacity 0.4s ease-out;
+}
+
+.about-scale-image:hover {
+  z-index: 2;
+  border-radius: 2px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transform: scale(3);
+}
+
+.about-scale-image:hover::before {
+  opacity: 1;
 }
 
 .about__grid {
   display: grid;
-  grid-template-columns: 0.9fr 1.5fr;
-  gap: 60px;
-  align-items: start;
+  grid-template-columns: 5fr 7fr;
+  gap: 0;
+  align-items: center;
 }
 
 .about__label,
@@ -744,6 +804,10 @@ video {
   font-family: "Inter", sans-serif;
   font-size: 18px;
   font-weight: 600;
+}
+
+.about__label {
+  justify-self: center;
 }
 
 .about__content h2,
@@ -756,8 +820,21 @@ video {
   line-height: 1.04;
 }
 
-.about__content h2 span {
-  color: var(--accent);
+.about__content h2 {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  margin-bottom: 35px;
+  font-size: 132px;
+  font-weight: 600;
+}
+
+.about__content h2 small {
+  margin-top: 35px;
+  color: #201b17;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1;
 }
 
 .about__content p,
@@ -774,18 +851,40 @@ video {
   grid-column: 2;
 }
 
-.about__chips {
-  display: flex;
-  justify-content: center;
-  gap: 22px;
-  margin-top: 80px;
+.arrow-btn--ai {
+  position: relative;
+  z-index: 1;
+  color: #201b17;
+  background: transparent;
 }
 
-.about__chips img {
-  width: 88px;
-  height: 88px;
-  border-radius: 24px;
-  object-fit: cover;
+.arrow-btn--ai::after {
+  position: absolute;
+  z-index: -2;
+  inset: -2px;
+  border-radius: 101px;
+  background-image: linear-gradient(90deg, #201b17 0%, #f96501 50%, #201b17 100%);
+  background-size: 150% 150%;
+  content: "";
+  animation: sliderTitle3 2s ease-in-out 1s forwards infinite alternate;
+}
+
+.arrow-btn--ai::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  border-radius: 100px;
+  background: #fff;
+  content: "";
+  transition: background 0.4s ease;
+}
+
+.arrow-btn--ai:hover {
+  color: #fff;
+}
+
+.arrow-btn--ai:hover::before {
+  background: transparent;
 }
 
 .video-band {
@@ -1669,6 +1768,20 @@ video {
     margin-right: 0;
   }
 
+  .about {
+    padding-top: 100px;
+    padding-bottom: 90px;
+  }
+
+  .about__label {
+    justify-self: center;
+    text-align: center;
+  }
+
+  .about__content h2 {
+    justify-content: center;
+  }
+
   .service-cards,
   .pricing__grid,
   .portfolio-preview__rail {
@@ -1763,9 +1876,24 @@ video {
     font-size: 18px;
   }
 
+  .about__ring {
+    display: none;
+  }
+
   .about__statement {
     margin-bottom: 58px;
+    font-size: 38px;
     text-align: left;
+  }
+
+  .about-scale-image {
+    width: 48px;
+    height: 48px;
+  }
+
+  .about__content h2 {
+    justify-content: flex-start;
+    font-size: 100px;
   }
 
   .video-band {

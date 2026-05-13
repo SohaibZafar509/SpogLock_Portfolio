@@ -48,31 +48,36 @@ export function HomePage() {
       </section>
 
       <section id="about" className="about section">
-        <img className="about__ring spin-slow" src={assets.aboutRing} alt="" />
-        <div className="about__statement reveal">
-          We design and develop digital systems that feel effortless because your business deserves
-          software that works as hard as you do.
-        </div>
+        <img className="about__ring" src={assets.aboutRing} alt="" />
+        <h2 className="about__statement reveal">
+          We take pride in every line of code we write
+          <span className="about-scale-image" style={{ '--about-image': `url(${assets.aboutShapeOne})` }} />
+          {' '}
+          because your business deserves
+          <span className="about-scale-image" style={{ '--about-image': `url(${assets.aboutShapeTwo})` }} />
+          {' '}
+          software that actually works. No shortcuts,
+          <span className="about-scale-image" style={{ '--about-image': `url(${assets.aboutShapeThree})` }} />
+          {' '}
+          no compromises.
+        </h2>
         <div className="about__grid">
           <span className="about__label reveal">/ Our About /</span>
           <div className="about__content reveal">
             <h2>
-              <span>Spoglock</span> Labs
+              <span className="title-slide-gradient">Spoglock</span>
+              <small>Labs</small>
             </h2>
             <p>
-              Spoglock Labs builds custom software for businesses that need practical digital
-              products: mobile apps, web apps, dashboards, internal systems, and high-fidelity
-              product interfaces.
+              At Spoglock Labs, quality isn&apos;t a feature, it&apos;s our standard. We build custom
+              mobile, web, and desktop applications designed around the way your business operates.
+              From the first conversation to final deployment, our goal is simple: you walk away
+              satisfied. We don&apos;t ship until you are.
             </p>
-            <ArrowButton href="/contact" variant="light">
+            <ArrowButton href="/contact" variant="ai">
               Get started
             </ArrowButton>
           </div>
-        </div>
-        <div className="about__chips reveal" aria-hidden="true">
-          {[assets.aboutShapeOne, assets.aboutShapeTwo, assets.aboutShapeThree].map((asset) => (
-            <img src={asset} alt="" key={asset} />
-          ))}
         </div>
       </section>
 
