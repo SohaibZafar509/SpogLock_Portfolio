@@ -1,7 +1,6 @@
 import { useState } from 'react'
-import { Menu, X } from 'lucide-react'
+import { X } from 'lucide-react'
 import { assets, contact, navItems } from '../data/siteData'
-import { ArrowButton } from './ArrowButton'
 import { GithubIcon, LinkedinIcon } from './SocialIcons'
 
 export function Header() {
@@ -48,16 +47,18 @@ export function Header() {
           ))}
         </nav>
         <div className="header-actions">
-          <ArrowButton href="/contact" variant="light">
+          <a className="header-contact-btn" href="/contact">
             Contact Us
-          </ArrowButton>
+          </a>
           <button
             className="menu-button"
             type="button"
             onClick={() => setOpen(true)}
             aria-label="Open menu"
           >
-            <Menu size={24} />
+            <span></span>
+            <span></span>
+            <span></span>
           </button>
         </div>
       </header>

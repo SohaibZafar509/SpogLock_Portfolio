@@ -36,9 +36,9 @@ export function HomePage() {
         <div className="hero__copy">
           <h1 className="hero-reveal">
             Your Vision,
-            <span>
+            <span className="hero__code-line">
               <img className="spin-slow" src={assets.heroSpark} alt="" />
-              Our Code
+              <span className="title-slide-gradient">Our Code</span>
             </span>
           </h1>
           <p className="hero-reveal">
