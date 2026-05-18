@@ -66,7 +66,7 @@ function App() {
   useGsapAnimations(routeKey)
 
   useEffect(() => {
-    const timeout = window.setTimeout(() => setLoaderHidden(true), 650)
+    const timeout = window.setTimeout(() => setLoaderHidden(true), 2500)
 
     return () => window.clearTimeout(timeout)
   }, [])

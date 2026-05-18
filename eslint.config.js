@@ -5,7 +5,15 @@ import reactRefresh from 'eslint-plugin-react-refresh'
 import { defineConfig, globalIgnores } from 'eslint/config'
 
 export default defineConfig([
-  globalIgnores(['dist', 'OldSite', 'node_modules', '.chrome-qa', '.edge-qa', 'public/vendor']),
+  globalIgnores([
+    'dist',
+    'OldSite',
+    'node_modules',
+    '.chrome-qa',
+    '.edge-qa',
+    'public/vendor',
+    'skiper_ui.com',
+  ]),
   {
     files: ['**/*.{js,jsx}'],
     extends: [
