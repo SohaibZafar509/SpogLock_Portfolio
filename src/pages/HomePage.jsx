@@ -1,12 +1,14 @@
-import { ArrowRight, Star } from 'lucide-react'
 import { ArrowButton } from '../components/ArrowButton'
 import { FaqAccordion } from '../components/FaqAccordion'
+import { FlowingMenu } from '../components/FlowingMenu'
 import { Marquee } from '../components/Marquee'
+import { PortfolioSnap } from '../components/PortfolioSnap'
 import { PricingCard } from '../components/PricingCard'
 import { SectionIntro } from '../components/SectionIntro'
+import { AnimatedTestimonials } from '../components/ui/AnimatedTestimonials'
 import {
   assets,
-  portfolioPreview,
+  homePortfolioSlides,
   pricingPlans,
   processSteps,
   services,
@@ -27,6 +29,17 @@ function ProcessArrowIcon() {
 
 export function HomePage() {
   useLegacyHoverEffect()
+  const serviceMenuItems = services.map((service, index) => ({
+    link: service.href,
+    text: `${String(index + 1).padStart(2, '0')} ${service.title}`,
+    image: service.cardImage ?? service.image,
+  }))
+  const animatedTestimonials = testimonials.map((testimonial) => ({
+    quote: testimonial.quote,
+    name: testimonial.name,
+    designation: testimonial.role,
+    src: testimonial.image ?? assets.profile,
+  }))
 
   return (
     <>
@@ -105,14 +118,16 @@ export function HomePage() {
           title="We build software that moves with your business"
           copy="From product thinking to deployment, each service points toward usable systems and measurable workflow gains."
         />
-        <div className="service-list">
-          {services.map((service, index) => (
-            <a className="service-row reveal" href={service.href} key={service.title}>
-              <span>{String(index + 1).padStart(2, '0')}</span>
-              <h3>{service.title}</h3>
-              <ArrowRight size={28} />
-            </a>
-          ))}
+        <div className="service-list reveal">
+          <FlowingMenu
+            items={serviceMenuItems}
+            speed={16}
+            textColor="#111112"
+            bgColor="transparent"
+            marqueeBgColor="#111112"
+            marqueeTextColor="#f4f0e6"
+            borderColor="rgba(17, 17, 18, 0.12)"
+          />
         </div>
         <div className="service-cards">
           {services.slice(0, 4).map((service) => (
@@ -177,24 +192,7 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="portfolio-preview section">
-        <SectionIntro
-          eyebrow="Our Portfolio"
-          title="Selected work across apps, dashboards, and interfaces"
-          copy="A focused look at the categories currently used in the Spoglock portfolio."
-        />
-        <div className="portfolio-preview__rail">
-          {portfolioPreview.map((project) => (
-            <a className="snap-card reveal" href={project.href} key={project.title}>
-              <img src={project.image} alt={project.title} />
-              <h3>{project.title}</h3>
-            </a>
-          ))}
-        </div>
-        <ArrowButton href="/portfolio" variant="light" className="portfolio-preview__button">
-          See all projects
-        </ArrowButton>
-      </section>
+      <PortfolioSnap slides={homePortfolioSlides} />
 
       <section className="pricing section" style={{ backgroundImage: `url(${assets.pricingBg})` }}>
         <img className="pricing__shape spin-slow" src={assets.pricingShape} alt="" />
@@ -213,27 +211,8 @@ export function HomePage() {
       <section className="testimonials section">
         <img className="testimonials__shape" src={assets.pricingShape} alt="" />
         <SectionIntro eyebrow="Our Testimonial" title="What clients say after the build" />
-        <div className="testimonial__hero reveal">
-          <img src={assets.woman} alt="Client testimonial portrait" />
-          <div>
-            <div className="stars">
-              {Array.from({ length: 5 }).map((_, index) => (
-                <Star size={20} fill="currentColor" key={index} />
-              ))}
-            </div>
-            <strong>5.0</strong>
-            <span>Client review average</span>
-          </div>
-        </div>
-        <div className="testimonial__cards">
-          {testimonials.map((item) => (
-            <article className="testimonial-card reveal" key={item.name}>
-              <img src={assets.profile} alt="" />
-              <p>{item.quote}</p>
-              <h3>{item.name}</h3>
-              <span>{item.role}</span>
-            </article>
-          ))}
+        <div className="testimonials__carousel reveal">
+          <AnimatedTestimonials testimonials={animatedTestimonials} autoplay />
         </div>
       </section>
 

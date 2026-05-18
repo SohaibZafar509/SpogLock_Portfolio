@@ -112,6 +112,116 @@ export function useGsapAnimations(routeKey) {
         })
       })
 
+      const snapSliderHolder = document.querySelector('.portfolio-snap__holder')
+      if (snapSliderHolder) {
+        const snapOverlay = document.querySelector('.portfolio-snap__overlay')
+        const snapSlides = gsap.utils.toArray('.portfolio-snap__slide')
+        const snapMasks = gsap.utils.toArray('.portfolio-snap__mask')
+        const snapCaptions = gsap.utils.toArray('.portfolio-snap__caption')
+        const snapThumbs = gsap.utils.toArray('.portfolio-snap__thumb')
+        const snapEnd = () => `+=${window.innerHeight * Math.max(snapSlides.length - 1, 1)}`
+        const snapScrub = 0.55
+        gsap.set([snapOverlay, ...snapMasks, ...snapThumbs, ...snapCaptions], { force3D: true })
+
+        if (snapOverlay) {
+          ScrollTrigger.create({
+            trigger: snapSliderHolder,
+            start: 'top top',
+            end: snapEnd,
+            pin: snapOverlay,
+            pinSpacing: false,
+            anticipatePin: 1,
+            scrub: snapScrub,
+            invalidateOnRefresh: true,
+          })
+        }
+
+        gsap.fromTo(
+          snapMasks,
+          { opacity: 0.1 },
+          {
+            opacity: 1,
+            ease: 'sine.out',
+            scrollTrigger: {
+              trigger: snapSliderHolder,
+              start: 'top 100%',
+              end: '+=100%',
+              scrub: snapScrub,
+            },
+          },
+        )
+
+        gsap.fromTo(
+          snapMasks,
+          { opacity: 1 },
+          {
+            opacity: 0.1,
+            ease: 'sine.out',
+            scrollTrigger: {
+              trigger: snapSliderHolder,
+              start: 'bottom 100%',
+              end: '+=100%',
+              scrub: snapScrub,
+            },
+          },
+        )
+
+        if (snapThumbs.length > 0) {
+          gsap.fromTo(
+            snapThumbs,
+            { y: 0 },
+            {
+              y: () => -snapThumbs[0].offsetHeight * (snapThumbs.length - 1),
+              ease: 'none',
+              scrollTrigger: {
+                trigger: snapSliderHolder,
+                start: 'top top',
+                end: snapEnd,
+                scrub: snapScrub,
+              },
+            },
+          )
+        }
+
+        if (snapCaptions.length > 0) {
+          gsap.fromTo(
+            snapCaptions,
+            { y: 0 },
+            {
+              y: () => -snapCaptions[0].offsetHeight * (snapCaptions.length - 1),
+              ease: 'none',
+              scrollTrigger: {
+                trigger: snapSliderHolder,
+                start: 'top top',
+                end: snapEnd,
+                scrub: snapScrub,
+              },
+            },
+          )
+        }
+
+        snapSlides.forEach((slide, index) => {
+          const masks = slide.querySelectorAll('.portfolio-snap__mask')
+          const isFirstSlide = index === 0
+          const isLastSlide = index === snapSlides.length - 1
+
+          gsap.fromTo(
+            masks,
+            { y: isFirstSlide ? 0 : -window.innerHeight },
+            {
+              y: isLastSlide ? 0 : window.innerHeight,
+              ease: 'none',
+              scrollTrigger: {
+                trigger: slide,
+                scrub: snapScrub,
+                start: isFirstSlide ? 'top top' : 'top bottom',
+                end: isLastSlide ? 'top top' : undefined,
+              },
+            },
+          )
+        })
+      }
+
       gsap.utils.toArray('.spin-slow').forEach((element) => {
         gsap.to(element, {
           rotate: 360,

@@ -37,6 +37,12 @@ import productTwo from '../assets/img/portfolio/thumb-2.jpg'
 import productThree from '../assets/img/portfolio/thumb-3.jpg'
 import productFour from '../assets/img/portfolio/thumb-4.jpg'
 import productFive from '../assets/img/portfolio/thumb-5.jpg'
+import portfolioAiOne from '../assets/img/portfolio/ai/thumb.jpg'
+import portfolioAiTwo from '../assets/img/portfolio/ai/thumb-2.jpg'
+import portfolioAiThree from '../assets/img/portfolio/ai/thumb-3.jpg'
+import portfolioAiThumbOne from '../assets/img/portfolio/ai/thumb-sm.jpg'
+import portfolioAiThumbTwo from '../assets/img/portfolio/ai/thumb-sm-2.jpg'
+import portfolioAiThumbThree from '../assets/img/portfolio/ai/thumb-sm-3.jpg'
 import indoor from '../assets/img/portfolio/grid/indoor.png'
 import aim from '../assets/img/portfolio/grid/aim.png'
 import jv from '../assets/img/portfolio/grid/jv.png'
@@ -181,10 +187,31 @@ export const portfolioProjects = [
   { title: 'Utility Store', type: 'Mobile App', category: 'mobile', image: utilityStore },
 ]
 
-export const portfolioPreview = [
-  { title: 'Mobile Apps', image: cheezious, href: '/portfolio/mobile-apps' },
-  { title: 'Web Applications', image: inventory, href: '/portfolio/web-applications' },
-  { title: 'UI/UX Design', image: smartHome, href: '/portfolio/ui-ux' },
+export const homePortfolioSlides = [
+  {
+    number: '001',
+    title: 'Business Management Systems',
+    tags: ['Design', 'Development', 'Deployment'],
+    image: portfolioAiOne,
+    thumb: portfolioAiThumbOne,
+    href: '/portfolio',
+  },
+  {
+    number: '002',
+    title: 'Web Applications',
+    tags: ['Analytics', 'Performance', 'Scalability'],
+    image: portfolioAiTwo,
+    thumb: portfolioAiThumbTwo,
+    href: '/portfolio',
+  },
+  {
+    number: '003',
+    title: 'Cross-Platform Apps',
+    tags: ['Mobile', 'Desktop', 'Web'],
+    image: portfolioAiThree,
+    thumb: portfolioAiThumbThree,
+    href: '/portfolio',
+  },
 ]
 
 export const productProjects = [
@@ -274,18 +301,21 @@ export const testimonials = [
   {
     name: 'Sarah Johnson',
     role: 'CEO, Retail Founder',
+    image: woman,
     quote:
       'Spoglock helped us turn a rough product idea into a clean app experience our team could actually launch.',
   },
   {
     name: 'Muhammad Ali',
     role: 'Appzone IT',
+    image: profile,
     quote:
       'Their process was clear and practical. The final dashboard made our daily operations faster and easier to track.',
   },
   {
     name: 'Adeel Khan',
     role: 'Logistics Consultants',
+    image: contactThumb,
     quote:
       'We needed software that matched our workflow, not a generic template. Spoglock delivered that.',
   },
